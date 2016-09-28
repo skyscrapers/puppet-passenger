@@ -24,23 +24,11 @@ class passenger::repo {
     class { 'apt': }
   }
 
-  if ($::lsbdistrelease == '12.04') {
-    apt::source { 'precise-passenger':
-      location    => 'http://skypackages.s3-website-eu-west-1.amazonaws.com/ubuntu/',
-      release     => 'precise-passenger',
-      repos       => 'main',
-      key         => '1BC1B9EF',
-      key_source  => 'http://skypackages.s3-website-eu-west-1.amazonaws.com/gpg.key',
-      include_src => false,
-    }
-  } elsif ($::lsbdistrelease == '14.04') {
-    apt::source { 'trusty-passenger':
-      location    => 'http://skypackages.s3-website-eu-west-1.amazonaws.com/ubuntu/',
-      release     => 'trusty-passenger',
-      repos       => 'main',
-      key         => '1BC1B9EF',
-      key_source  => 'http://skypackages.s3-website-eu-west-1.amazonaws.com/gpg.key',
-      include_src => false,
-    }
+  apt::source { 'passenger':
+    location    => 'https://oss-binaries.phusionpassenger.com/apt/passenger/4',
+    release     => $lsbdistcodename,
+    repos       => 'main',
+    key         => '561F9B9CAC40B2F7',
+    include_src => false,
   }
 }
