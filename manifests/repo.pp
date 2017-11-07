@@ -28,7 +28,9 @@ class passenger::repo {
     location    => 'https://oss-binaries.phusionpassenger.com/apt/passenger/4',
     release     => $lsbdistcodename,
     repos       => 'main',
-    key         => '561F9B9CAC40B2F7',
-    include_src => false,
+    key         =>  {
+    'id'     => '561F9B9CAC40B2F7',
+    'server' => 'hkp://keyserver.ubuntu.com:80',
+    },
   }
 }
